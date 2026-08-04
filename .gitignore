@@ -1,0 +1,17 @@
+# 供应商原始数据一律不入库
+strikes/
+day_*.json
+dealer_*.json
+st_*.json
+probe*.json
+*.jsonl
+data/
+
+# 浏览器会话 / 凭证
+*token*.json
+.env
+.env.*
+
+__pycache__/
+*.pyc
+.DS_Store
