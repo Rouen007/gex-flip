@@ -22,7 +22,8 @@ triggers:
 ## 直接跑
 
 ```bash
-python3 ~/.claude/skills/gex-flip/flip.py TSLA              # flip + 可信度评分
+python3 ~/.claude/skills/gex-flip/flip.py TSLA              # flip + 可信度评分（白名单标的）
+python3 ~/.claude/skills/gex-flip/heatmap.py INTC PANW ORCL  # 非白名单标的走 Dealer Heatmap
 python3 ~/.claude/skills/gex-flip/flip.py TSLA NVDA AAPL    # 批量
 python3 ~/.claude/skills/gex-flip/flip.py TSLA --chart      # 附终端版 heatmap 列，对着图核对
 python3 ~/.claude/skills/gex-flip/flip.py --manual 315:-83.8 317.5:300.6 --spot 323.45
@@ -169,7 +170,9 @@ weekly 过滤后翻转点直接消失** → 那个 flip 是假位，结构其实
 
 | 路径 | 用途 |
 |---|---|
-| `flip.py` | 主工具：算 flip + 可信度评分 + 终端版 heatmap |
+| `flip.py` | 主工具：Standard GEX 算 flip + 可信度评分（白名单 11 标的，**算法已验证**）|
+| `heatmap.py` | Dealer Heatmap 读取（**全市场**，但无官方 flip，只读结构不报 flip）|
+| `flip_from_chain.py` | 🧪 实验性：Yahoo 期权链 + BS gamma 自算 GEX 剖面（误差 0.4–4.7%，只作数量级参考）|
 | `test_flip.py` | 离线自检（真实盘面固定用例，不联网不要数据集） |
 | `docs/methodology.md` | 完整方法论与全部回测数据 |
 | `research/analyze_flip_from_strikes.py` | 复现验证（60 天 / 4677 帧） |
@@ -177,6 +180,8 @@ weekly 过滤后翻转点直接消失** → 那个 flip 是假位，结构其实
 | `research/analyze_crossing_density.py` | 翻转点密度 → 趋势度（唯一活着的发现） |
 | `research/analyze_premarket_flip_entry.py` | 盘前入场/目标位回测（含零模型） |
 | `research/analyze_flip_entry_rules.py` | 建仓规则回测（方向/距离档/止损目标，含 Wilson 区间） |
+| `research/analyze_flip_priority.py` | 5 种优先级对打（哪个翻转点该叫 flip） |
+| `research/analyze_flip_vol_null.py` | 波动分离度的安慰剂对照（开盘价/VWAP/King/随机位） |
 | `research/analyze_flip_stability.py` | 瞬移量化 |
 | `research/flip_mechanism_check.py` | put/call 主导验证 |
 | `research/scan_universe.py` | 跨标的批量验证 + 分辨率/瞬移风险表 |
