@@ -1,15 +1,11 @@
 ---
 name: gex-flip
-description: 从期权 GEX heatmap 的 per-strike 数据反算 Gamma Flip（个股 / ETF / 指数通用），含可信度评分、瞬移风险、机制解读。算法已在 SPX 60天4677帧 + 10只个股23组到期上 100% 精确复现官方 gammaFlip。触发词："flip", "gamma flip", "算一下 XXX 的 flip", "flip 在哪", "heatmap 推 flip", "个股 flip", "翻转点", "zero gamma", "正负 gamma 分界"
-version: 1.0.0
-tags: [gex, gamma, flip, heatmap, options, nightwatch, yehangshe, dealer, single-stock]
-triggers:
-  - flip
-  - gamma flip
-  - gex-flip
-  - 算 flip
-  - 推 flip
-  - 翻转点
+description: 从期权 GEX heatmap 的 per-strike 数据反算 Gamma Flip（个股 / ETF / 指数通用），含可信度评分、瞬移风险、机制解读。算法已在 SPX 60天4677帧 + 10只个股23组到期上 100% 精确复现官方 gammaFlip。触发词："flip",
+  "gamma flip", "算一下 XXX 的 flip", "flip 在哪", "heatmap 推 flip", "个股 flip", "翻转点", "zero gamma", "正负 gamma 分界"
+metadata:
+  version: 1.0.0
+  tags: '["gex", "gamma", "flip", "heatmap", "options", "nightwatch", "yehangshe", "dealer", "single-stock"]'
+  triggers: '["flip", "gamma flip", "gex-flip", "算 flip", "推 flip", "翻转点"]'
 ---
 
 # gex-flip · 从 heatmap 推算 Gamma Flip
